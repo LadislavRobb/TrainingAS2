@@ -9,7 +9,7 @@ void _CYCLIC ProgramCyclic(void)
 {
 
 	i++;
-	if (i > 80) {
+	if (i > 160) {
 		DO1 = !DO1;
 		i = 0;
 	}	
