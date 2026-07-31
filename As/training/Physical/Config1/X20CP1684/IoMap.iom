@@ -1,0 +1,3 @@
+VAR_CONFIG
+	::test AT %IW."X20AT2222".Temperature01;
+END_VAR
