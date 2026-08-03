@@ -1,0 +1,121 @@
+WATCH Ver=2.00 PLCName=PLC1 CPUName=CPU TaskName=CfgStorage 
+Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 Index=32 ASCIIString=0
+                                    name                                     type force                                                            value level type len format place expand specs
+                      testConfigVariable                                     REAL    0 "                                                             0.0"    0    8    1   10    1    0         
+                    mpCfgRecipeRegPar_FB                     MpRecipeRegPar[0..1]    0 "                                                               *"    0   24    2    0    1    1         
+                 mpCfgRecipeRegPar_FB[1]                           MpRecipeRegPar    0 "                                                               *"    1   24    1    0    1    0         
+                                  MpLink                                    UDINT    0 "                                                       105182684"    2    7    1   10    0    0         
+                                  Enable                                     BOOL    0 "                                                            TRUE"    2    1    1    2    0    0         
+                              ErrorReset                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
+                                  PVName                                    UDINT    0 "                                                       106115841"    2    7    1   10    0    0         
+                                Category                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
+                                  Active                                     BOOL    0 "                                                            TRUE"    2    1    1    2    0    0         
+                                   Error                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
+                                StatusID                                     DINT    0 "                                                               0"    2    4    1   10    0    0         
+                      UpdateNotification                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
+                                    Info                   MpRecipeRegParInfoType    0 "                                                               *"    2   24    1    0    0    0         
+                                    Diag                         MpRecipeDiagType    0 "                                                               *"    3   24    1    0    0    0         
+                                StatusID                     MpRecipeStatusIDType    0 "                                                               *"    4   24    1    0    0    0         
+                                      ID                                     DINT    0 "                                                               0"    5    4    1   10    0    0 e,0,mpRE
+
+                                Severity                                     DINT    0 "                                                               0"    5    4    1   10    0    0 e,0,mpCO
+
+                                Internal                    MpComInternalDataType    0 "                                                               *"    2   24    1    0    0    0         
+                                 pObject                                    UDINT    0 "                                                       119504640"    3    7    1   10    0    0         
+                                   State                                    UDINT    0 "                                                               3"    3    7    1   10    0    0         
+                                    diag                                 DiagType    0 "                                                               *"    0   24    1    0    1    1         
+                          cnt_memoryLost                                    UDINT    0 "                                                               1"    1    7    1   10    0    0         
+                                 cntLoad                                    UDINT    0 "                                                               2"    1    7    1   10    0    0         
+                                 cntSave                                    UDINT    0 "                                                               1"    1    7    1   10    0    0         
+                                cntError                                    UDINT    0 "                                                               2"    1    7    1   10    0    0         
+                           cntErrorReset                                    UDINT    0 "                                                               1"    1    7    1   10    0    0         
+                            cntDetection                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
+                         cntDetectionIni                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
+                          intfCfgStorage                  InterfaceCfgStorageType    0 "                                                               *"    0   24    1    0    0    1         
+                                    step                                     DINT    0 "                                                             100"    1    4    1   10    0    0 e,0,cfgS
+
+                                     cmd                        CfgStorageCmdType    0 "                                                               *"    1   24    1    0    0    1         
+                                saveData                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
+                                loadData                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
+                              errorReset                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
+                                     mon                        CfgStorageMonType    0 "                                                               *"    1   24    1    0    0    1         
+                       dataInitializedOk                                     BOOL    0 "                                                            TRUE"    2    1    1    2    0    0         
+                              lostMemory                                     BOOL    0 "                                                            TRUE"    2    1    1    2    0    0         
+                                regParOk                                     BOOL    0 "                                                            TRUE"    2    1    1    2    0    0         
+                                  loadOk                                     BOOL    0 "                                                            TRUE"    2    1    1    2    0    0         
+                                  saveOk                                     BOOL    0 "                                                            TRUE"    2    1    1    2    0    0         
+                  requestHMIconfirmation                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
+                         dataDetectIndex                                     UINT    0 "                                                               0"    2    6    1   10    0    0         
+                      numberCfgVariables                                     UINT    0 "                                                               0"    2    6    1   10    0    0         
+                     unsavedDataDetected                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
+                                stateHMI                                     DINT    0 "                                                               1"    2    4    1   10    0    0 e,0,cfgS
+
+                                     cfg                        CfgStorageCfgType    0 "                                                               *"    1   24    1    0    0    1         
+                                    mode                                     DINT    0 "                                                               3"    2    4    1   10    0    0 e,0,cfgS
+
+                                  header                       MpRecipeHeaderType    0 "                                                               *"    1   24    1    0    0    1         
+                                    Name                              STRING[100]    0 "                                    'Hypoxia configuration file'"    2    9  101    1    0    0         
+                             Description                              STRING[255]    0 "                 'Compete system setup for current installation'"    2    9  256    1    0    0         
+                                 Version                               STRING[20]    0 "                                                              ''"    2    9   21    1    0    0         
+                                DateTime                            DATE_AND_TIME    0 "                                          DT#2026-08-03-21:01:11"    2   11    1    1    0    0         
+                                   error                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                statusID                                     DINT    0 "                                                    16#0000_0000"    1    4    1   16    0    0         
+                                  mpLink                           MpComIdentType    0 "                                                               *"    1   24    1    0    0    1         
+                                Internal                              UDINT[0..1]    0 "                                                               *"    2    7    2    0    0    1         
+                             Internal[0]                                    UDINT    0 "                                                       119564968"    3    7    1   10    0    0         
+                             Internal[1]                                    UDINT    0 "                                                      2877828772"    3    7    1   10    0    0         
+                          mpCfgRecipe_FB                              MpRecipeXml    0 "                                                               *"    0   24    1    0    1    1         
+                                  MpLink                                    UDINT    0 "                                                       105292840"    1    7    1   10    0    0         
+                                  Enable                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
+                              ErrorReset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                              DeviceName                                    UDINT    0 "                                                       105292522"    1    7    1   10    0    0         
+                                FileName                                    UDINT    0 "                                                       105292580"    1    7    1   10    0    0         
+                                  Header                                    UDINT    0 "                                                       105182292"    1    7    1   10    0    0         
+                                Category                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
+                                LoadType                                     DINT    0 "                                                               0"    1    4    1   10    0    0 e,0,mpRE
+
+                                    Load                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                    Save                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                      UpdateNotification                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                  Active                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
+                                   Error                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                StatusID                                     DINT    0 "                                                               0"    1    4    1   10    0    0         
+                             CommandBusy                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                             CommandDone                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                    Info                      MpRecipeXmlInfoType    0 "                                                               *"    1   24    1    0    0    1         
+                                FileSize                                    UDINT    0 "                                                             576"    2    7    1   10    0    0         
+                             PendingSync                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
+                                    Diag                         MpRecipeDiagType    0 "                                                               *"    2   24    1    0    0    1         
+                                StatusID                     MpRecipeStatusIDType    0 "                                                               *"    3   24    1    0    0    1         
+                                      ID                                     DINT    0 "                                                               0"    4    4    1   10    0    0 e,0,mpRE
+
+                                Severity                                     DINT    0 "                                                               0"    4    4    1   10    0    0 e,0,mpCO
+
+                        LastLoadedRecipe                              STRING[255]    0 "                                                              ''"    2    9  256    1    0    0         
+                           InternalState                                    USINT    0 "                                                               1"    1    5    1   10    0    0         
+                            InternalData                             UDINT[0..24]    0 "                                                               *"    1    7   25    0    0    0         
+                         InternalData[0]                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
+                         InternalData[1]                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
+                         InternalData[2]                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
+                         InternalData[3]                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
+                         InternalData[4]                                    UDINT    0 "                                                        51536372"    2    7    1   10    0    0         
+                         InternalData[5]                                    UDINT    0 "                                                      3230826498"    2    7    1   10    0    0         
+                         InternalData[6]                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
+                         InternalData[7]                                    UDINT    0 "                                                       106124534"    2    7    1   10    0    0         
+                         InternalData[8]                                    UDINT    0 "                                                       115491940"    2    7    1   10    0    0         
+                         InternalData[9]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[10]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[11]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[12]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[13]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[14]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[15]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[16]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[17]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[18]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[19]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[20]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[21]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[22]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[23]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                        InternalData[24]                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         

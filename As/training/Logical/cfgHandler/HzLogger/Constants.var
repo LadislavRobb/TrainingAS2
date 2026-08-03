@@ -1,0 +1,6 @@
+(*HzLogger constants*)
+(*******************************)
+VAR CONSTANT
+	hzlogDEBUG_MODE_ON : BOOL := TRUE; (*Debugging mode is ON / some diagnostics features are    ON*)
+	hzlogLOGGER_STRING_LEN : UINT := 255; (*Size of string writing additional data to logger*)
+END_VAR

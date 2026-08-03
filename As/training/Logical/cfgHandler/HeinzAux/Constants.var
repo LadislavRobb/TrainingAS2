@@ -1,0 +1,20 @@
+(*Basic Constants*)
+(*************************************************************************************************************************************)
+VAR CONSTANT
+	hzauxSIZE_STRING_DEFAULT : UINT := 255; (*Default size of string for library purposes*)
+	hzauxMEM_INDCT : USINT := 11; (*Memory lost indicator*)
+END_VAR
+(**)
+VAR CONSTANT
+	hzauxFB_STATUS_FILE_EXISTS : UINT := 20705; (*File  exist*)
+	hzauxFB_STATUS_DIR_NOT_EXISTS : UINT := 20723; (*Error directory not exists*)
+END_VAR
+(* *)
+(* *)
+(*DateTime format for string generation*)
+VAR CONSTANT
+	hzauxSTRING_FORMAT_MAX : USINT := 11; (*Max value for numeric formatting*)
+	hzauxSTRING_FORMAT_NONE : USINT := 0;
+	hzauxSTRING_FORMAT_2DIGITS : USINT := 2;
+	hzauxSTRING_FORMAT_3DIGITS : USINT := 3;
+END_VAR

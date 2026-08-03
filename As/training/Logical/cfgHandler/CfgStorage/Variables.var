@@ -1,0 +1,43 @@
+(*Constants*)
+VAR CONSTANT
+	MEMORY_PATTERN : UDINT := 16#AAAA5555; (*Memory pattern to check retain memory*)
+	HEADER_NAME : STRING[100] := 'Hypoxia configuration file'; (*Used for file header*)
+	HEADER_DESCRIPTION : STRING[255] := 'Compete system setup for current installation'; (*Description of header*)
+	HMI_TIME : UDINT := 2000; (*Time for displaying OK status *)
+END_VAR
+(* *)
+(* *)
+(*Variables*)
+VAR
+	regParEnable : {REDUND_UNREPLICABLE} BOOL; (*Enable for all regpar mapp FBs*)
+	errorResetRegPar : {REDUND_UNREPLICABLE} BOOL; (*Error reset regpar mapp FBs*)
+END_VAR
+(* *)
+VAR
+	mpCfgRecipeRegPar_FB : {REDUND_UNREPLICABLE} ARRAY[0..prjcfgNR_CFG_STORAGE_VAR] OF MpRecipeRegPar; (*Registration FB mainconfig structure*)
+	mpCfgRecipe_FB : {REDUND_UNREPLICABLE} MpRecipeXml; (*Configuration recipe system*)
+	gettime_FB : {REDUND_UNREPLICABLE} DTGetTime;
+	HpLogWriteI_FB : {REDUND_UNREPLICABLE} HzLogWrite; (*Writing logger event with integer parameter*)
+	ArEventLogGetIdent_FB : {REDUND_UNREPLICABLE} ArEventLogGetIdent; (*Ident user log*)
+END_VAR
+(* *)
+VAR
+	diag : {REDUND_UNREPLICABLE} DiagType; (*diagnostics structure*)
+END_VAR
+(* *)
+(*Change detection variables*)
+(***********************************)
+VAR
+	changeDetectionPointers : {REDUND_UNREPLICABLE} ARRAY[0..prjcfgNR_CFG_STORAGE_VAR] OF CfgChangeDetectionType; (*Change detection variable, adresses and sizes are stored here*)
+END_VAR
+(**)
+(*Temp*)
+VAR
+	i : {REDUND_UNREPLICABLE} UINT;
+	timerHMI_FB : {REDUND_UNREPLICABLE} TP; (*hmi timer*)
+	regParErrFlag : {REDUND_UNREPLICABLE} BOOL;
+END_VAR
+VAR RETAIN
+	testConfigVariable : {REDUND_UNREPLICABLE} REAL;
+	memoryPattern : {REDUND_UNREPLICABLE} UDINT;
+END_VAR

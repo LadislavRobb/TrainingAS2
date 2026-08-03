@@ -1,0 +1,19 @@
+VAR CONSTANT
+	prjcfgDEV_NAME_A_CONFIG : STRING[50] := 'Cfg'; (*Device name A config data recipe system*)
+	prjcfgDEV_NAME_B_CONFIG : STRING[50] := 'Cfg'; (*Device name B config data recipe system*)
+	prjcfgFILE_NAME_A_CONFIG : STRING[255] := 'ConfigData_A'; (*File  name mirror A  config data recipe system*)
+	prjcfgFILE_NAME_B_CONFIG : STRING[255] := 'ConfigData_B'; (*File  name mirror B  config data recipe system*)
+	prjcfgNR_CFG_STORAGE_VAR : USINT := 1; (*Nr saved/loadend structures*)
+	prjcfgDEFAULT_MODE_LOAD_CFG : CfgStorageModeEnum := cfgStorage_AUTO_LOAD_EVERY_BOOT; (*Default mode of loading cfg, It is asctive in case of reset cfg memory*)
+END_VAR
+(*Errors constants*)
+VAR CONSTANT
+	prjFACILITY_INFRASTRUCTURE : UINT := 5; (*Facility code for infrastructuree*)
+	infrastrWARN_CFGSTORAGE_MEM_LOST : UINT := 1100; (*Retain memory lost*)
+	infrastrERR_CFGSTORAGE_SAVING_A : UINT := 1202; (*Error during saving file A*)
+	infrastrERR_CFGSTORAGE_SAVING_B : UINT := 1203; (*Error during saving file B*)
+	infrastrERR_CFGSTORAGE_REGPAR : UINT := 1204; (*Error reg par FB*)
+	infrastrERR_CFGSTORAGE_LOADING_A : UINT := 1205; (*Error during loading file A*)
+	infrastrERR_CFGSTORAGE_LOADING_B : UINT := 1206; (*Error during loading  file B*)
+	infrastrERR_CFGSTORAGE_BUFFER : UINT := 1208; (*Small change detection buffer*)
+END_VAR

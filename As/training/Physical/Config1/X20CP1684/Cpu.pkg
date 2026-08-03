@@ -23,7 +23,7 @@
     <AutomationRuntime Version="6.5.1" />
     <Build GccVersion="11.3.0" />
     <DefaultTargetMemory Tasks="UserROM" />
-    <Transfer />
+    <Transfer AddToUserPart="False" AdditionalUserDir="C:\01_CodeRepLR\00_Avante\TrainingAS2\USERPART" AllowDowngrade="False" AllowInitialTransfer="False" AllowPartitioning="False" ExecuteInitExitProgram="True" ForceInitialTransfer="False" IgnoreVersion="True" KeepNonVolatileMemory="False" PreserveVariableValues="False" ProjectConsistent="True" RebootDuringTransfer="False" TargetIdentificationType="Always" TryToBootInRunMode="False" UserFilesIgnoreDifference="False" />
     <Vc FirmwareVersion="6.5.0" />
   </Configuration>
 </Cpu>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library Version="1.0.0" SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Library change log ">ChangeLog.txt</File>
+    <File Description="Lib constants">Constants.var</File>
+    <File Description="Lib data types">LibTypes.typ</File>
+    <File Description="Functions and function blocks">HzLogger.fun</File>
+    <File Description="FB/FC  source code">HzLogWrite.c</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="AsBrStr" />
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="ArEventLog" />
+    <Dependency ObjectName="HeinzAux" />
+  </Dependencies>
+</Library>

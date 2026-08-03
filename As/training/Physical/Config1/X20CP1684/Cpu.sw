@@ -6,7 +6,9 @@
   </TaskClass>
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
-  <TaskClass Name="Cyclic#4" />
+  <TaskClass Name="Cyclic#4">
+    <Task Name="CfgStorage" Source="cfgHandler.CfgStorage.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+  </TaskClass>
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
   <TaskClass Name="Cyclic#7" />
@@ -27,5 +29,15 @@
   <Libraries>
     <LibraryObject Name="UaCore" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="standard" Source="Libraries.standard.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="HzLogger" Source="cfgHandler.HzLogger.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <LibraryObject Name="runtime" Source="Libraries.runtime.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="AsBrStr" Source="cfgHandler.AsBrStr.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="ArEventLog" Source="cfgHandler.ArEventLog.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="MpRecipe" Source="Libraries.MpRecipe.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="MpBase" Source="Libraries.MpBase.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="sys_lib" Source="Libraries.sys_lib.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="astime" Source="Libraries.astime.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="HeinzAux" Source="cfgHandler.HeinzAux.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <LibraryObject Name="CheckLib" Source="cfgHandler.CheckLib.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
   </Libraries>
 </SwConfiguration>
