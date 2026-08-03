@@ -41,23 +41,9 @@ PROGRAM _CYCLIC
 		HpLogWriteI_FB.ErrorCode := infrastrERR_CFGSTORAGE_REGPAR;
 		HpLogWriteI_FB.CompleteID := 0;
 		HpLogWriteI_FB.AdditionalDataString := '';
-		HpLogWriteI_FB.Parametr := 0;
 		HpLogWriteI_FB();
 	END_IF;	
 
-	// buffer error write to logger
-	IF flagBufferErrorWriteLogger THEN
-		flagBufferErrorWriteLogger := FALSE;
-		// to write to logbook
-		HpLogWriteI_FB.Severity := arEVENTLOG_SEVERITY_ERROR;
-		HpLogWriteI_FB.Facility := prjFACILITY_INFRASTRUCTURE;		
-		HpLogWriteI_FB.ErrorCode := infrastrERR_CFGSTORAGE_BUFFER;
-		HpLogWriteI_FB.CompleteID := 0;
-		HpLogWriteI_FB.AdditionalDataString := 'Index nr:';
-		HpLogWriteI_FB.Parametr := intfCfgStorage.mon.numberCfgVariables ;
-		HpLogWriteI_FB();
-	END_IF;	
-	
 	(*******************)
 	(* FBs mapp calling*)
 	(*******************)
@@ -78,13 +64,6 @@ PROGRAM _CYCLIC
 			intfCfgStorage.statusID := ArEventLogMakeEventID(arEVENTLOG_SEVERITY_ERROR,prjFACILITY_INFRASTRUCTURE,infrastrERR_CFGSTORAGE_REGPAR);	
 			diag.cntError := diag.cntError + 1;
 		END_IF;	
-	ELSIF intfCfgStorage.mon.numberCfgVariables <> prjcfgNR_CFG_STORAGE_VAR THEN
-		// error size of detection buffer
-		IF NOT intfCfgStorage.error THEN
-			intfCfgStorage.error := TRUE;
-			intfCfgStorage.statusID := ArEventLogMakeEventID(arEVENTLOG_SEVERITY_ERROR,prjFACILITY_INFRASTRUCTURE,infrastrERR_CFGSTORAGE_BUFFER);	
-			diag.cntError := diag.cntError + 1;
-		END_IF;	
 	END_IF;	
 	
 	
@@ -101,7 +80,7 @@ PROGRAM _CYCLIC
 			brsmemset(ADR(intfCfgStorage.cmd),0,SIZEOF(intfCfgStorage.cmd));
 			
 			// presetting logger data
-			HpLogWriteI_FB.Ident := intfLogger.ident;				(* Ident of user logger from interface *)
+			HpLogWriteI_FB.Ident := ArEventLogGetIdent_FB.Ident;				(* Ident of user logger from interface *)
 			HpLogWriteI_FB.Facility := prjFACILITY_INFRASTRUCTURE;
 			HpLogWriteI_FB.CreatorName := 'CfgStorage';
 			
@@ -116,7 +95,7 @@ PROGRAM _CYCLIC
 			regParEnable :=TRUE;	
 			
 			// checking memory 
-			IF mainConfig.memoryPattern = MEMORY_PATTERN THEN
+			IF memoryPattern = MEMORY_PATTERN THEN
 				// retain memory OK
 				intfCfgStorage.mon.lostMemory := FALSE;
 				
@@ -136,7 +115,7 @@ PROGRAM _CYCLIC
 				END_IF;	
 			ELSE
 				// retain memory reset
-				mainConfig.memoryPattern := MEMORY_PATTERN;
+				memoryPattern := MEMORY_PATTERN;
 				intfCfgStorage.mon.lostMemory :=TRUE;
 				diag.cnt_memoryLost := diag.cnt_memoryLost + 1; 
 				// to write to logbook
@@ -144,7 +123,6 @@ PROGRAM _CYCLIC
 				HpLogWriteI_FB.ErrorCode := infrastrWARN_CFGSTORAGE_MEM_LOST;
 				HpLogWriteI_FB.CompleteID := 0;
 				HpLogWriteI_FB.AdditionalDataString := '';
-				HpLogWriteI_FB.Parametr := 0;
 				HpLogWriteI_FB();
 				
 				IF intfCfgStorage.cfg.mode <> cfgStorage_MANUAL THEN
@@ -179,6 +157,7 @@ PROGRAM _CYCLIC
 				IF intfCfgStorage.error THEN
 					// active error first auto reset 
 					intfCfgStorage.cmd.errorReset := TRUE;
+					intfCfgStorage.cmd.saveData := FALSE;
 				ELSE 
 					// no error save is possible
 					intfCfgStorage.cmd.saveData := FALSE;
@@ -194,6 +173,7 @@ PROGRAM _CYCLIC
 				IF intfCfgStorage.error THEN
 					// active error first auto reset 
 					intfCfgStorage.cmd.errorReset := TRUE;
+					intfCfgStorage.cmd.saveData := FALSE;
 				ELSE 
 					// no error load is possible
 					intfCfgStorage.cmd.loadData := FALSE;
@@ -205,9 +185,6 @@ PROGRAM _CYCLIC
 				
 					intfCfgStorage.step := cfgStorageSTEP_LOADING_A_INI;
 				END_IF;	
-			ELSIF DetectionTimer_FB.Q THEN
-				DetectionTimer_FB.IN := FALSE;
-				intfCfgStorage.step := cfgStorageSTEP_COMPARE_DATA_INI;
 			END_IF;	
 		
 			(**********************)
@@ -215,14 +192,14 @@ PROGRAM _CYCLIC
 			(**********************)
 			// A	
 		cfgStorageSTEP_SAVING_A_INI:
-			mainConfig.memoryPattern := MEMORY_PATTERN;
+			memoryPattern := MEMORY_PATTERN;
 			mpCfgRecipe_FB.Save := TRUE;
 			mpCfgRecipe_FB.DeviceName := ADR(prjcfgDEV_NAME_A_CONFIG);
 			mpCfgRecipe_FB.FileName := ADR(prjcfgFILE_NAME_A_CONFIG);
 			// presetting header
 			intfCfgStorage.header.Name := HEADER_NAME;
 			intfCfgStorage.header.Description := HEADER_DESCRIPTION;
-			intfCfgStorage.header.Version := mainSW_VERSION;
+			//intfCfgStorage.header.Version := mainSW_VERSION;
 			gettime_FB.enable := TRUE;
 			gettime_FB();
 			intfCfgStorage.header.DateTime := gettime_FB.DT1;
@@ -241,7 +218,7 @@ PROGRAM _CYCLIC
 					// logger
 					HpLogWriteI_FB.CompleteID := intfCfgStorage.statusID;
 					HpLogWriteI_FB.AdditionalDataString := 'Saving error config file A statusID:';
-					HpLogWriteI_FB.Parametr := mpCfgRecipe_FB.StatusID;
+					//HpLogWriteI_FB.Parametr := mpCfgRecipe_FB.StatusID;
 					HpLogWriteI_FB();
 				ELSIF mpCfgRecipe_FB.CommandDone THEN
 					// OK saved		
@@ -257,7 +234,7 @@ PROGRAM _CYCLIC
 		cfgStorageSTEP_SAVING_B:
 			IF NOT mpCfgRecipe_FB.CommandBusy THEN
 				mpCfgRecipe_FB.Save := FALSE;
-				intfCfgStorage.step := cfgStorageSTEP_DETECT_DATA_INI;								
+				intfCfgStorage.step := cfgStorageSTEP_COMMAND_READY;								
 				IF mpCfgRecipe_FB.Error THEN
 					// saving error
 					intfCfgStorage.error := TRUE;
@@ -266,12 +243,11 @@ PROGRAM _CYCLIC
 					// logger
 					HpLogWriteI_FB.CompleteID := intfCfgStorage.statusID;
 					HpLogWriteI_FB.AdditionalDataString := 'Saving error config file B statusID:';
-					HpLogWriteI_FB.Parametr := mpCfgRecipe_FB.StatusID;
+					//HpLogWriteI_FB.Parametr := mpCfgRecipe_FB.StatusID;
 					HpLogWriteI_FB();					
 				ELSIF mpCfgRecipe_FB.CommandDone THEN
 					// OK saved		
 					timerHMI_FB.IN := TRUE;
-					intfChecker.cmd.start := TRUE;
 				END_IF;			
 			END_IF;					    
 
@@ -298,7 +274,7 @@ PROGRAM _CYCLIC
 					// logger
 					HpLogWriteI_FB.CompleteID := intfCfgStorage.statusID;
 					HpLogWriteI_FB.AdditionalDataString := 'Loading error config file A statusID:';
-					HpLogWriteI_FB.Parametr := mpCfgRecipe_FB.StatusID;
+					//HpLogWriteI_FB.Parametr := mpCfgRecipe_FB.StatusID;
 					HpLogWriteI_FB();
 					
 					intfCfgStorage.step := cfgStorageSTEP_LOADING_B_INI;
@@ -308,8 +284,8 @@ PROGRAM _CYCLIC
 					intfCfgStorage.mon.loadOk := TRUE;
 					intfCfgStorage.mon.dataInitializedOk := TRUE;
 					intfCfgStorage.mon.requestHMIconfirmation := FALSE;
-					intfChecker.cmd.start := TRUE;
-					intfCfgStorage.step := cfgStorageSTEP_DETECT_DATA_INI;
+					//intfChecker.cmd.start := TRUE;
+					intfCfgStorage.step := cfgStorageSTEP_COMMAND_READY;
 				END_IF;			
 			END_IF;			
 			// B
@@ -321,7 +297,7 @@ PROGRAM _CYCLIC
 		cfgStorageSTEP_LOADING_B:
 			IF NOT mpCfgRecipe_FB.CommandBusy THEN
 				mpCfgRecipe_FB.Load := FALSE;
-				intfCfgStorage.step := cfgStorageSTEP_DETECT_DATA_INI;								
+				intfCfgStorage.step := cfgStorageSTEP_COMMAND_READY;								
 				IF mpCfgRecipe_FB.Error THEN
 					// saving error
 					intfCfgStorage.error := TRUE;
@@ -330,7 +306,7 @@ PROGRAM _CYCLIC
 					// logger
 					HpLogWriteI_FB.CompleteID := intfCfgStorage.statusID;
 					HpLogWriteI_FB.AdditionalDataString := 'Loading error config file B statusID:';
-					HpLogWriteI_FB.Parametr := mpCfgRecipe_FB.StatusID;
+					//HpLogWriteI_FB.Parametr := mpCfgRecipe_FB.StatusID;
 					HpLogWriteI_FB();					
 					intfCfgStorage.mon.loadOk := FALSE;
 				ELSIF mpCfgRecipe_FB.CommandDone THEN
@@ -338,51 +314,12 @@ PROGRAM _CYCLIC
 					intfCfgStorage.mon.loadOk := TRUE;
 					intfCfgStorage.mon.requestHMIconfirmation := FALSE;
 					intfCfgStorage.mon.dataInitializedOk := TRUE;
-					intfChecker.cmd.start := TRUE;
+					//intfChecker.cmd.start := TRUE;
 					timerHMI_FB.IN := TRUE;
 				END_IF;			
 			END_IF;					    
 	
-			(******************************)
-			(* Detection DATA preparation *)
-			(******************************)			
-		cfgStorageSTEP_DETECT_DATA_INI:
-			intfCfgStorage.mon.unsavedDataDetected := FALSE;		
-			intfCfgStorage.mon.dataDetectIndex := 0;		
-			diag.cntDetectionIni := diag.cntDetectionIni + 1;
-			intfCfgStorage.step := cfgStorageSTEP_DETECT_DATA_RUN;
-		cfgStorageSTEP_DETECT_DATA_RUN:			
-			intfCfgStorage.mon.dataDetectIndex := intfCfgStorage.mon.dataDetectIndex + 1;		
-			IF intfCfgStorage.mon.dataDetectIndex <=  changeDetectionMaxIndex THEN
-				IF (changeDetectionPointers[intfCfgStorage.mon.dataDetectIndex].savedStructureAdr <> 0) AND (changeDetectionPointers[intfCfgStorage.mon.dataDetectIndex].size > 0) THEN
-					brsmemcpy(changeDetectionPointers[intfCfgStorage.mon.dataDetectIndex].savedStructureAdr , changeDetectionPointers[intfCfgStorage.mon.dataDetectIndex].actStructureAdr, changeDetectionPointers[intfCfgStorage.mon.dataDetectIndex].size);
-				END_IF;		
-			ELSE
-				// finished
-				intfCfgStorage.step := cfgStorageSTEP_COMMAND_READY;	
-			END_IF;		
 
-			(******************************)
-			(* Detection DATA COMPARE     *)
-			(******************************)			
-		cfgStorageSTEP_COMPARE_DATA_INI:
-			intfCfgStorage.mon.dataDetectIndex := 0;
-			diag.cntDetection := diag.cntDetection + 1;
-			intfCfgStorage.step := cfgStorageSTEP_COMPARE_DATA_RUN;
-		cfgStorageSTEP_COMPARE_DATA_RUN:			
-			intfCfgStorage.mon.dataDetectIndex := intfCfgStorage.mon.dataDetectIndex + 1;		
-			IF intfCfgStorage.mon.dataDetectIndex <=  changeDetectionMaxIndex THEN
-				IF brsmemcmp(changeDetectionPointers[intfCfgStorage.mon.dataDetectIndex].actStructureAdr,changeDetectionPointers[intfCfgStorage.mon.dataDetectIndex].savedStructureAdr,changeDetectionPointers[intfCfgStorage.mon.dataDetectIndex].size) <> 0 THEN
-					// change detected
-					intfCfgStorage.mon.unsavedDataDetected := TRUE;	
-					intfCfgStorage.step := cfgStorageSTEP_COMMAND_READY;						
-				END_IF;	
-			ELSE
-				// finished
-				intfCfgStorage.mon.unsavedDataDetected := FALSE;					
-				intfCfgStorage.step := cfgStorageSTEP_COMMAND_READY;	
-			END_IF;					
-			
 			(**********************)
 			(* Error reset        *)
 			(**********************)		
@@ -417,7 +354,5 @@ PROGRAM _CYCLIC
 		intfCfgStorage.mon.stateHMI := cfgStorageHMI_READY;
 	END_IF;	
 	
-	// detection timer
-	DetectionTimer_FB();
-	DetectionTimer_FB.IN := TRUE;
+
 END_PROGRAM

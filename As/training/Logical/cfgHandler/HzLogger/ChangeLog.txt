@@ -1,0 +1,4 @@
+HzLogger library changelog
+***************************
+V0.0.0 23.7.2026 LR Initial development version 
+V1.0.0 29.7.2026 LR fix safety - strncpy

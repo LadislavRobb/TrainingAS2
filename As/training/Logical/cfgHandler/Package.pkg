@@ -2,6 +2,12 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
+    <Object Type="Library" Language="binary" Description="The ArEventLog library can be used to collect additional error information and for further processing.">ArEventLog</Object>
+    <Object Type="Library" Language="binary" Description="The AsBrStr Library contains FBKs for memory and character string handling.">AsBrStr</Object>
+    <Object Type="Library" Language="ANSIC" Description="FBs for easy work with diagnostics logger">HzLogger</Object>
+    <Object Type="Library" Language="ANSIC" Description="Heinz Glas Auxiliary library">HeinzAux</Object>
+    <Object Type="Library" Language="ANSIC">CheckLib</Object>
+    <Object Type="File" Private="true">CfgConstants.var</Object>
     <Object Type="File" Description="Interface data handling" TransferedForTargetSourceCompare="true">InterfaceConfigStorage.var</Object>
     <Object Type="File" Description="Interface definition - data handling" TransferedForTargetSourceCompare="true">InterfaceConfigStorage.typ</Object>
     <Object Type="Program" Language="IEC" Description="Configuration storage task" TransferedForTargetSourceCompare="true">CfgStorage</Object>

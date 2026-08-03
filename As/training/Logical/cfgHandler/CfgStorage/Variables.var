@@ -4,8 +4,6 @@ VAR CONSTANT
 	HEADER_NAME : STRING[100] := 'Hypoxia configuration file'; (*Used for file header*)
 	HEADER_DESCRIPTION : STRING[255] := 'Compete system setup for current installation'; (*Description of header*)
 	HMI_TIME : UDINT := 2000; (*Time for displaying OK status *)
-	SIZE_DETECTION_BUFFER : UDINT := 1000000; (*Size of detection buffer for all config data*)
-	DETECTION_PERIOD : UDINT := 15000; (*Period of change detection [ms]*)
 END_VAR
 (* *)
 (* *)
@@ -19,7 +17,8 @@ VAR
 	mpCfgRecipeRegPar_FB : {REDUND_UNREPLICABLE} ARRAY[0..prjcfgNR_CFG_STORAGE_VAR] OF MpRecipeRegPar; (*Registration FB mainconfig structure*)
 	mpCfgRecipe_FB : {REDUND_UNREPLICABLE} MpRecipeXml; (*Configuration recipe system*)
 	gettime_FB : {REDUND_UNREPLICABLE} DTGetTime;
-	HpLogWriteI_FB : {REDUND_UNREPLICABLE} HpLogWriteIntegerPar; (*Writing logger event with integer parameter*)
+	HpLogWriteI_FB : {REDUND_UNREPLICABLE} HzLogWrite; (*Writing logger event with integer parameter*)
+	ArEventLogGetIdent_FB : {REDUND_UNREPLICABLE} ArEventLogGetIdent; (*Ident user log*)
 END_VAR
 (* *)
 VAR
@@ -30,11 +29,6 @@ END_VAR
 (***********************************)
 VAR
 	changeDetectionPointers : {REDUND_UNREPLICABLE} ARRAY[0..prjcfgNR_CFG_STORAGE_VAR] OF CfgChangeDetectionType; (*Change detection variable, adresses and sizes are stored here*)
-	changeDetectionData : {REDUND_UNREPLICABLE} ARRAY[0..SIZE_DETECTION_BUFFER] OF USINT; (*Stored last saved all config data*)
-	changeDetectionMaxIndex : {REDUND_UNREPLICABLE} UINT; (*Max index of Detection pointers configuration*)
-	DetectionTimer_FB : {REDUND_UNREPLICABLE} TON;
-	tempDataOffset : {REDUND_UNREPLICABLE} UDINT;
-	flagBufferErrorWriteLogger : {REDUND_UNREPLICABLE} BOOL;
 END_VAR
 (**)
 (*Temp*)
@@ -42,4 +36,8 @@ VAR
 	i : {REDUND_UNREPLICABLE} UINT;
 	timerHMI_FB : {REDUND_UNREPLICABLE} TP; (*hmi timer*)
 	regParErrFlag : {REDUND_UNREPLICABLE} BOOL;
+END_VAR
+VAR RETAIN
+	testConfigVariable : {REDUND_UNREPLICABLE} REAL;
+	memoryPattern : {REDUND_UNREPLICABLE} UDINT;
 END_VAR

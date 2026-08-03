@@ -1,0 +1,12 @@
+HeinzAux library changelog
+***************************
+V0.0.0 24.2.2026 LR Initial version 
+V1.0.1 19.3.2026 LR Add FC HzAngleConvertor0_360 
+V1.0.2 24.3.2026 LR Add FC HzAngleConvertorDINT, bugfix in constants
+V1.0.3 07.4.2026 LR Add FB HzAuxImgFileNameS
+V1.1.0 24.4.2026 LR Add safety string operational
+V1.1.1 24.4.2026 LR bugfix
+V1.1.2 27.4.2026 LR Add spec. SVG script params string operational
+V1.2.0 15.7.2026 LR Add HzAuxStateMonTimeout
+V1.2.1 29.7.2026 LR fix HzAuxStr_Cat - for more safety better check of string lenght
+V1.3.0 29.7.2026 LR Add FC HzAuxStr_Cpy safe strcpy

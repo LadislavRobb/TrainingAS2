@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library Version="1.3.0" SubType="ANSIC" Description="Heinz Glas Auxiliary library" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Change log HeinzAux library">ChangeLog.txt</File>
+    <File Description="HeinzAux constants">Constants.var</File>
+    <File Description="HeinzAux data types">LibTypes.typ</File>
+    <File Description="Functions and function blocks">HeinzAux.fun</File>
+    <File Description="Implementation string FBs">HzAuxString.c</File>
+    <File Description="Implementation angle convertor FBs">HzAngleConvertor.c</File>
+    <File Description="Implementation of state monitoring FC">HzAuxStateMonTimeout.c</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="astime" FromVersion="6.4.2" />
+    <Dependency ObjectName="AsBrStr" FromVersion="6.4.2" />
+    <Dependency ObjectName="CheckLib" />
+    <Dependency ObjectName="standard" />
+  </Dependencies>
+</Library>

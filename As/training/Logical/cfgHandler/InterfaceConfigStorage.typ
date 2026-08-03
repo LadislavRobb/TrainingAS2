@@ -67,7 +67,6 @@ TYPE
 		cfgStorageSTEP_LOADING_A := 211, (*Loading  file A*)
 		cfgStorageSTEP_LOADING_B_INI := 212, (*Loading  file B ini step*)
 		cfgStorageSTEP_LOADING_B := 213, (*Loading  file B*)
-		cfgStorageSTEP_DETECT_DATA_INI := 300, (*Ini prepara detection data *)
 		cfgStorageSTEP_DETECT_DATA_RUN := 301, (*Preparing detection data *)
 		cfgStorageSTEP_COMPARE_DATA_INI := 302, (*Ini data compare*)
 		cfgStorageSTEP_COMPARE_DATA_RUN := 303, (*Comparing data*)
@@ -90,4 +89,15 @@ TYPE
 END_TYPE
 
 (* *)
+
+TYPE
+	CfgStorageModeEnum : 
+		(
+		cfgStorage_NOT_DEFINED := 0,
+		cfgStorage_MANUAL := 1, (*Everything work only manual, save or load only thought commands*)
+		cfgStorage_AUTO_LOAD_MEMORY_LOST := 2, (*Auto load data after boot when retain memory is lost.*)
+		cfgStorage_AUTO_LOAD_EVERY_BOOT := 3 (*Auto load data after every boot*)
+		);
+END_TYPE
+
 (* *)

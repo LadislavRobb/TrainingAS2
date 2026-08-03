@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library Version="1.3.0" SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File>StateTimeOut.typ</File>
+    <File>Constants.var</File>
+    <File>CheckLib.fun</File>
+    <File>RiseActiveCmd.c</File>
+    <File>FallActiveCmd.c</File>
+    <File TransferedForTargetSourceCompare="true">RisingSetCmd.c</File>
+    <File TransferedForTargetSourceCompare="true">FallingSetCmd.c</File>
+    <File>ValueRange.c</File>
+    <File>RisingEdgeNeg.c</File>
+    <File>FallingEdgeNeg.c</File>
+    <File>biggerThanNumber.c</File>
+    <File>smallerThanNumber.c</File>
+    <File>StateTimeOut.c</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="standard" />
+  </Dependencies>
+</Library>
