@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="Interface data handling" TransferedForTargetSourceCompare="true">InterfaceConfigStorage.var</Object>
+    <Object Type="File" Description="Interface definition - data handling" TransferedForTargetSourceCompare="true">InterfaceConfigStorage.typ</Object>
+    <Object Type="Program" Language="IEC" Description="Configuration storage task" TransferedForTargetSourceCompare="true">CfgStorage</Object>
+  </Objects>
+</Package>

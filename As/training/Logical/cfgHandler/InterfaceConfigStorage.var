@@ -1,0 +1,3 @@
+VAR
+	intfCfgStorage : {REDUND_UNREPLICABLE} InterfaceCfgStorageType; (*Interface to config storage*)
+END_VAR
