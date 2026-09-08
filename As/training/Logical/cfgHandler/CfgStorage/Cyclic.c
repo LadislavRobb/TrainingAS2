@@ -3,17 +3,15 @@
  * Description:                                                                *
  *  Using mpRecipe saving, loading configuration data                          *
  *                                                                             *
- *                                                                             *
- *******************************************************************************/
  * Cycle time: Cyclic x x ms                                                  *
  * Author: Ladislav Robb                                                      *
- *******************************************************************************/
- *Changelog:                                                                   *
+ *                                                                             *
+ * Changelog:                                                                  *
  *   V2.0.0 LR first released version                                         *
  *   V2.0.1 23.02.2025  LR HMI status                                         *
  *   V2.0.2 04.05.2025  LR change detection                                   *
  *   V2.0.3 25.05.2025  LR adds cfgAtlasOPC                                   *
- ******************************************************************************/
+ *******************************************************************************/
 
 #include <bur/plctypes.h>
 
