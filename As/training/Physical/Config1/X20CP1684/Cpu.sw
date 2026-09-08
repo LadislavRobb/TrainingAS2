@@ -7,7 +7,8 @@
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4">
-    <Task Name="CfgStorage" Source="cfgHandler.CfgStorage.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="CfgStorage" Source="cfgHandler.CfgStorageOld.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="CfgStorag1" Source="cfgHandler.CfgStorage.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
