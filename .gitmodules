@@ -1,3 +1,4 @@
 [submodule "SharedResources/GneLibPrj"]
 	path = SharedResources/GneLibPrj
 	url = https://github.com/LadislavRobb/GenLibPrj.git
+	branch = develop
