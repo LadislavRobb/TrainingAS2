@@ -10,5 +10,7 @@
     <Object Type="Library" Language="Binary" Description="Core library for mapp components">MpBase</Object>
     <Object Type="Library" Language="binary" Description="The SYS_LIB library contains functions for memory management and operating system manipulation as well as hardware-specific functions.">sys_lib</Object>
     <Object Type="Library" Language="binary" Description="The AsTime Library supports DATE_AND_TIME and TIME data types.">astime</Object>
+    <Object Type="Library" Language="ANSIC" Description="OpcSimple library" Reference="true">C:\01_CodeRepLR\00_Avante\TrainingAS2\SharedResources\GneLibPrj\As\opcsimpleDev\Logical\OpcSimple\ANSIC.lby</Object>
+    <Object Type="Library" Language="binary" Description="The AsOpcUac library provides function blocks for communication with an OPC UA Server">AsOpcUac</Object>
   </Objects>
 </Package>

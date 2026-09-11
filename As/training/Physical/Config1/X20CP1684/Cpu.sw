@@ -40,5 +40,7 @@
     <LibraryObject Name="astime" Source="Libraries.astime.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="HeinzAux" Source="cfgHandler.HeinzAux.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <LibraryObject Name="CheckLib" Source="cfgHandler.CheckLib.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <LibraryObject Name="AsOpcUac" Source="Libraries.AsOpcUac.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="OpcSimple" Source="Libraries.OpcSimple.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
   </Libraries>
 </SwConfiguration>
